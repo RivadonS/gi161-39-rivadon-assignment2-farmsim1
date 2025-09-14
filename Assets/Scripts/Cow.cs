@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Cow
 {
+    //Property
     private string name;
     public string Name
     {
