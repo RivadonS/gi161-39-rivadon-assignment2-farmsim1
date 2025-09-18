@@ -1,29 +1,7 @@
 using UnityEngine;
 
-public class Cow
+public class Cow : Animal
 {
-    //Property
-    private string name;
-    public string Name
-    {
-        get => name;
-        set => name = (string.IsNullOrEmpty(value)) ? "Unknown Cow Name" : value;
-    }
-
-    private int hunger;
-    public int Hunger
-    {
-        get => hunger;
-        set => hunger = (value < 0) ? 0 : (value > 50) ? 50 : value;
-    }
-
-    private int happiness;
-    public int Happiness
-    {
-        get => happiness;
-        set => happiness = (value < 0) ? 0 : (value > 50) ? 50 : value;
-    }
-
     private float milk;
     public float Milk
     {
@@ -32,44 +10,29 @@ public class Cow
     }
 
     //Constructor
-    public Cow(string newName, int newHunger, int newHappiness, float newMilk)
+    public void Init(string newName, int newHunger, int newHappiness, float newMilk)
     {
-        Name = newName;
-        Hunger = newHunger;
-        Happiness = newHappiness;
+        base.Init(newName, newHunger, newHappiness); 
         Milk = newMilk;
     }
 
     //Method
-    public int AdjustHunger(int amount)
+    public override void MakeSound()
     {
-        Hunger += amount;
-        Debug.Log($"{Name}'s hunger is now: {Hunger}");
-        return Hunger;
+        base.MakeSound();
+        Debug.Log($"{Name} mooing.");
     }
 
-    public int AdjustHappiness(int amount)
+    public override void GetStatus()
     {
-        Happiness += amount;
-        Debug.Log($"{Name}'s happiness is now: {Happiness}");
-        return Happiness;
+        base.GetStatus();
+        Debug.Log($"Name: {Name}, Milk: {Milk}");
     }
 
-    public void MakeSound()
+    public void Feeds(string foodTypes, int amountFood)
     {
-        AdjustHappiness(10);
-        Debug.Log($"{Name} says 'Moo!'. Happiness increased by 10.");
+        string FoodTypes = foodTypes;
+        Debug.Log($"{Name} is eating {FoodTypes}");
+        base.Feed(amountFood);
     }
-
-    public string Feed(string feed)
-    {
-        AdjustHunger(-10);
-        AdjustHappiness(10);
-        Debug.Log($"{Name} ate some {feed}. Hunger decreased and happiness increased.");
-        return $"The chicken ate {feed}.";
-    }
-
-    public void GetStatus() => Debug.Log($"Status of {Name}: Hunger = {Hunger}, Happiness = {Happiness}, Milk = {Milk}");
-
-    public void Moo() => MakeSound();
 }

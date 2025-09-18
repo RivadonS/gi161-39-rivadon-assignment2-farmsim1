@@ -1,28 +1,7 @@
 using UnityEngine;
 
-public class Chicken
+public class Chicken : Animal
 {
-    //Property
-    private string name;
-    public string Name { 
-        get => name; 
-        set => name = (string.IsNullOrEmpty(value)) ? "Unknown Chicken Name" : value; 
-    }
-
-    private int hunger;
-    public int Hunger
-    {
-        get => hunger;
-        set => hunger = (value < 0) ? 0 : (value > 50) ? 50 : value;
-    }
-
-    private int happiness;
-    public int Happiness
-    {
-        get => happiness;
-        set => happiness = (value < 0) ? 0 : (value > 50) ? 50 : value;
-    }
-
     private int eggs;
     public int Eggs
     {
@@ -31,48 +10,36 @@ public class Chicken
     }
 
     //Constructor
-    public Chicken(string newName, int newHunger, int newHappiness, int newEggs)
+    public void Init(string newName, int newHunger, int newHappiness, int newEggs)
     {
-        Name = newName;
-        Hunger = newHunger;
-        Happiness = newHappiness;
+        base.Init(newName, newHunger, newHappiness);
         Eggs = newEggs;
     }
 
     //Method
-    public int AdjustHunger(int amount)
+    public override void MakeSound()
     {
-        Hunger += amount;
-        Debug.Log($"{Name}'s hunger is now: {Hunger}");
-        return Hunger;
+        base.MakeSound();
+        Debug.Log($"{Name} clucking.");
     }
-
-    public int AdjustHappiness(int amount)
-    {
-        Happiness += amount;
-        Debug.Log($"{Name}'s happiness is now: {Happiness}");
-        return Happiness;
-    }
-
-    public void MakeSound()
-    {
-
-    }
-
-    public string Feed(string feed)
-    {
-        AdjustHunger(-10);
-        AdjustHappiness(10);
-        Debug.Log($"{Name} ate some {feed}. Hunger decreased and happiness increased.");
-        return $"The chicken ate {feed}.";
-    }
-
-    public void GetStatus() => Debug.Log($"Status of {Name}: Hunger = {Hunger}, Happiness = {Happiness}, Eggs = {Eggs}");
 
     public void Sleep()
     {
         AdjustHunger(5);
         AdjustHappiness(10);
         Debug.Log($"{Name} is sleeping. Hunger increased slightly and happiness increased.");
+    }
+
+    public override void GetStatus()
+    {
+        base.GetStatus();
+        Debug.Log($"Name: {Name}, Eggs: {Eggs}");
+    }
+
+    public void Feeds(string foodTypes, int amountFood)
+    {
+        string FoodTypes = foodTypes;
+        Debug.Log($"{Name} is eating {FoodTypes}");
+        base.Feed(amountFood);
     }
 }
