@@ -19,8 +19,8 @@ public class Chicken : Animal
     //Method
     public override void MakeSound()
     {
-        base.MakeSound();
         Debug.Log($"{Name} clucking.");
+        base.MakeSound();
     }
 
     public void Sleep()

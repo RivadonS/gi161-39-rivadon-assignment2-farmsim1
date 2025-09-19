@@ -3,59 +3,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public List<Animal> farmAnimals = new List<Animal>();
-    public Chicken currentChicken;
-    public Cow currentCow;
-
+    public List<Animal> animals = new List<Animal>();
+    public List<Animal> animalsCount = new List<Animal>();
     void Start()
     {
-        DisplayGameName("My FarmVille");
+        Chicken chicken1 = (Chicken)Instantiate(animals[0]);
+        chicken1.Init("Luffytaro", 10, 10, 0);
+        animalsCount.Add(chicken1);
 
-        if (currentChicken != null)
-        {
-            currentChicken.Init("Chicky", 10, 10, 0);
-        }
+        Cow cow1 = (Cow)Instantiate(animals[1]);
+        cow1.Init("Zorojuro", 15, 15, 0);
+        animalsCount.Add(cow1);
 
-        if (currentCow != null)
-        {
-            currentCow.Init("Milly", 20, 20, 0);
-        }
+        Fox fox1 = (Fox)Instantiate(animals[2]);
+        fox1.Init("Usoppun", 10, 10);
+        animalsCount.Add(fox1);
 
-        if (currentChicken != null)
-        {
-            farmAnimals.Add(currentChicken);
-        }
+        Debug.Log("Welcome to Farm Sim");
+        Debug.Log($"There are {animalsCount.Count} animals in the farm.");
 
-        if (currentCow != null)
-        {
-            farmAnimals.Add(currentCow);
-        }
-
-        DisplayAnimalCount();
-
-        foreach (Animal animal in farmAnimals)
+        foreach (Animal animal in animalsCount)
         {
             animal.GetStatus();
-        }
-
-        foreach (Animal animal in farmAnimals)
-        {
             animal.MakeSound();
-        }
-
-        foreach (Animal animal in farmAnimals)
-        {
             animal.Feed(5);
         }
-    }
-
-    public void DisplayGameName(string gameName)
-    {
-        Debug.Log($"Welcome to {gameName}!");
-    }
-
-    public void DisplayAnimalCount()
-    {
-        Debug.Log($"There are {farmAnimals.Count} animals on the farm.");
     }
 }

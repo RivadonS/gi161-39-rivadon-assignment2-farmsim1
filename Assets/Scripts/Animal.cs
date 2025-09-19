@@ -2,12 +2,11 @@ using UnityEngine;
 
 public abstract class Animal : MonoBehaviour
 {
-    // Use a private backing field for the Name property.
-    private string _name;
+    private string name;
     public string Name
     {
-        get => _name;
-        set => _name = (string.IsNullOrEmpty(value)) ? "Unknown Name" : value;
+        get => name;
+        set => name = (string.IsNullOrEmpty(value)) ? "Unknown Name" : value;
     }
 
     private int hunger;
@@ -27,8 +26,7 @@ public abstract class Animal : MonoBehaviour
     // Constructor
     public virtual void Init(string newName, int newHunger, int newHappiness)
     {
-        // This line is the key. It sets the Name property, which in turn
-        // sets the private _name field.
+
         Name = newName;
         Hunger = newHunger;
         Happiness = newHappiness;
@@ -57,8 +55,8 @@ public abstract class Animal : MonoBehaviour
 
     public virtual void Feed(int amountFood)
     {
-        AdjustHunger(Hunger -= amountFood * 5);
-        AdjustHappiness(Happiness += amountFood * 5);
+        AdjustHunger(Hunger -= amountFood * 4);
+        AdjustHappiness(Happiness += amountFood * 4);
         Debug.Log($"{Name} ate food at the amount of {amountFood}.");
     }
 
