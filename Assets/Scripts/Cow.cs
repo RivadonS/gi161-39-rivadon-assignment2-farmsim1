@@ -6,7 +6,7 @@ public class Cow : Animal
     public float Milk
     {
         get => milk;
-        set => milk = (value < 0) ? 0 : value;
+        private set => milk = (value < 0) ? 0 : value;
     }
 
     //Constructor

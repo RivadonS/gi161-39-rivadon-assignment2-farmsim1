@@ -13,14 +13,14 @@ public abstract class Animal : MonoBehaviour
     public int Hunger
     {
         get => hunger;
-        set => hunger = (value < 0) ? 0 : (value > 50) ? 50 : value;
+        private set => hunger = (value < 0) ? 0 : (value > 50) ? 50 : value;
     }
 
     private int happiness;
     public int Happiness
     {
         get => happiness;
-        set => happiness = (value < 0) ? 0 : (value > 50) ? 50 : value;
+        private set => happiness = (value < 0) ? 0 : (value > 50) ? 50 : value;
     }
 
     // Constructor
