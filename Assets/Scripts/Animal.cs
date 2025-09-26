@@ -19,15 +19,12 @@ public abstract class Animal : MonoBehaviour
     }
 
     //private int hunger;
-    protected int maxHunger = 100;
-    public int Hunger { get; protected set; }
+    private int maxHunger = 100;
+    public int Hunger { get; private set; }
 
-    private int happiness;
-    public int Happiness
-    {
-        get => happiness;
-        private set => happiness = (value < 0) ? 0 : (value > 50) ? 50 : value;
-    }
+    //private int happiness;
+    private int maxHappiness = 100;
+    public int Happiness { get; private set; }
 
     // Constructor
     public virtual void Init(string newName, int newHunger, int newHappiness)
@@ -49,7 +46,8 @@ public abstract class Animal : MonoBehaviour
 
     public int AdjustHappiness(int amount)
     {
-        Happiness += amount;
+        //Happiness += amount;
+        Happiness = Mathf.Clamp(Happiness + amount, 0, maxHappiness);
         Debug.Log($"{Name}'s happiness is now: {Happiness}");
         return Happiness;
     }
