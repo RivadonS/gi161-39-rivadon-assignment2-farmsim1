@@ -36,4 +36,9 @@ public class Cow : Animal
         Debug.Log($"{Name} is eating {FoodTypes}");
         base.Feed(amountFood);
     }
+
+    public override void Produce()
+    {
+        throw new System.NotImplementedException();
+    }
 }

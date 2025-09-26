@@ -20,4 +20,9 @@ public class Fox : Animal
     {
         base.GetStatus();
     }
+
+    public override void Produce()
+    {
+        throw new System.NotImplementedException();
+    }
 }

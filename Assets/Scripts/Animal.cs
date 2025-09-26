@@ -1,5 +1,14 @@
 using UnityEngine;
 
+public enum FoodType
+{
+    Hay,
+    Grain,
+    Apple,
+    RottenFood,
+    AnimalFood
+}
+
 public abstract class Animal : MonoBehaviour
 {
     private string name;
@@ -9,12 +18,9 @@ public abstract class Animal : MonoBehaviour
         set => name = (string.IsNullOrEmpty(value)) ? "Unknown Name" : value;
     }
 
-    private int hunger;
-    public int Hunger
-    {
-        get => hunger;
-        private set => hunger = (value < 0) ? 0 : (value > 50) ? 50 : value;
-    }
+    //private int hunger;
+    protected int maxHunger = 100;
+    public int Hunger { get; protected set; }
 
     private int happiness;
     public int Happiness
@@ -35,7 +41,8 @@ public abstract class Animal : MonoBehaviour
     // Method
     public int AdjustHunger(int amount)
     {
-        Hunger += amount;
+        //Hunger += amount;
+        Hunger = Mathf.Clamp(Hunger + amount, 0, maxHunger);
         Debug.Log($"{Name}'s hunger is now: {Hunger}");
         return Hunger;
     }
@@ -47,14 +54,16 @@ public abstract class Animal : MonoBehaviour
         return Happiness;
     }
 
-    public abstract void MakeSound();
-
     public virtual void Feed(int amountFood)
     {
         AdjustHunger(Hunger -= amountFood * 4);
-        AdjustHappiness(Happiness += amountFood * 4);
+        AdjustHappiness(Happiness += amountFood / 2);
         Debug.Log($"{Name} ate food at the amount of {amountFood}.");
     }
 
     public virtual void GetStatus() => Debug.Log($"Status of {Name}: Hunger = {Hunger}, Happiness = {Happiness}");
+
+    public abstract void MakeSound();
+
+    public abstract void Produce();
 }
