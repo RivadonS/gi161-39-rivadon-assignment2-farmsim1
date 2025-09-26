@@ -10,10 +10,10 @@ public class Chicken : Animal
     }
 
     //Constructor
-    public void Init(string newName, int newHunger, int newHappiness, int newEggs)
+    public override void Init(string newName)
     {
-        base.Init(newName, newHunger, newHappiness);
-        Eggs = newEggs;
+        base.Init(newName);
+        PreferedFood = FoodType.Grain;
     }
 
     //Method
@@ -37,11 +37,25 @@ public class Chicken : Animal
         Debug.Log($"Name: {Name}, Eggs: {Eggs}");
     }
 
-    public void Feeds(string foodTypes, int amountFood)
+    public void Feeds(FoodType preferedFood, int amountFood)
     {
-        string FoodTypes = foodTypes;
-        Debug.Log($"{Name} is eating {FoodTypes}");
-        base.Feed(amountFood);
+        switch (preferedFood)
+        {
+            case FoodType.RottenFood:
+                AdjustHunger(0);
+                AdjustHappiness(-20);
+                Debug.Log($"{Name} ate RottenFood. Hunger unchanged, Happiness decreased by 20. Latest Happiness: {Happiness}");
+                break;
+            case FoodType.AnimalFood:
+                base.Feed(amountFood);
+                break;
+            default:
+                AdjustHunger(-amountFood);
+                AdjustHappiness(15);
+                Debug.Log($"{Name} is happy because eating {preferedFood} in amount of {amountFood}." +
+                    $"Latest Happiness: {Happiness}");
+                break;
+        }
     }
 
     public override void Produce()

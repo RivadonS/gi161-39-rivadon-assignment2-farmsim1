@@ -8,15 +8,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Chicken chicken1 = (Chicken)Instantiate(animals[0]);
-        chicken1.Init("Luffytaro", 10, 10, 0);
+        chicken1.Init("Luffytaro");
         animalsCount.Add(chicken1);
 
         Cow cow1 = (Cow)Instantiate(animals[1]);
-        cow1.Init("Zorojuro", 15, 15, 0);
+        cow1.Init("Zorojuro");
         animalsCount.Add(cow1);
 
         Fox fox1 = (Fox)Instantiate(animals[2]);
-        fox1.Init("Usoppun", 10, 10);
+        fox1.Init("Usoppun");
         animalsCount.Add(fox1);
 
         Debug.Log("Welcome to Farm Sim");
