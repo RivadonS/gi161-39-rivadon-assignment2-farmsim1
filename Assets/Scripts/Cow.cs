@@ -19,7 +19,8 @@ public class Cow : Animal
     //Method
     public override void MakeSound()
     {
-        base.MakeSound();
+        AdjustHappiness(10);
+        Debug.Log($"{Name} makes the sound. Happiness increased by 10.");
         Debug.Log($"{Name} mooing.");
     }
 

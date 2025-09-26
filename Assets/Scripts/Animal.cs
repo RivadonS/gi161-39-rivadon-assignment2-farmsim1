@@ -47,11 +47,7 @@ public abstract class Animal : MonoBehaviour
         return Happiness;
     }
 
-    public virtual void MakeSound()
-    {
-        AdjustHappiness(10);
-        Debug.Log($"{Name} makes the sound. Happiness increased by 10.");
-    }
+    public abstract void MakeSound();
 
     public virtual void Feed(int amountFood)
     {
