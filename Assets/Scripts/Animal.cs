@@ -31,7 +31,7 @@ public abstract class Animal : MonoBehaviour
     public FoodType PreferedFood { get; protected set; }
 
     // Constructor
-    public virtual void Init(string newName)
+    public void Init(string newName)
     {
         Name = newName;
         Hunger = 50;
@@ -66,5 +66,5 @@ public abstract class Animal : MonoBehaviour
 
     public abstract void MakeSound();
 
-    public abstract void Produce();
+    public abstract string Produce();
 }

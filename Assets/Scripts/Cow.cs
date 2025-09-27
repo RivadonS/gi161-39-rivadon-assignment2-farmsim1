@@ -10,7 +10,7 @@ public class Cow : Animal
     }
 
     //Constructor
-    public override void Init(string newName)
+    public void InitCow(string newName)
     {
         base.Init(newName);
         PreferedFood = FoodType.Hay;
@@ -51,8 +51,23 @@ public class Cow : Animal
         }
     }
 
-    public override void Produce()
+    public override string Produce()
     {
-        throw new System.NotImplementedException();
+        switch (Happiness)
+        {
+            case <= 70:
+
+                Debug.Log($"{Name} is not happy enough to produce milk. Happiness: {Happiness}");
+                return $"Total milk: {Milk} Units";
+
+            case > 70:
+
+                int milkProduced = Happiness / 10;
+
+                Milk += milkProduced;
+
+                Debug.Log($"{Name} is going to produce milks");
+                return $"Total milk: {Milk} Units";
+        }
     }
 }

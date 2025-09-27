@@ -6,11 +6,11 @@ public class Chicken : Animal
     public int Eggs
     {
         get => eggs;
-        set => eggs = (value < 0) ? 0 : value;
+        private set => eggs = (value < 0) ? 0 : value;
     }
 
     //Constructor
-    public override void Init(string newName)
+    public void InitChicken(string newName)
     {
         base.Init(newName);
         PreferedFood = FoodType.Grain;
@@ -58,8 +58,32 @@ public class Chicken : Animal
         }
     }
 
-    public override void Produce()
+    public override string Produce()
     {
-        throw new System.NotImplementedException();
+        switch (Happiness)
+        {
+            case <= 50:
+
+                Debug.Log($"{Name} is not happy enough to produce eggs. Happiness: {Happiness}");
+                return $"Total eggs: {Eggs}";
+
+            case >= 51 and <= 79:
+
+                int eggsProduced = 2;
+
+                Eggs += eggsProduced;
+
+                Debug.Log($"{Name} is going to produce eggs. Amount produced this round: {eggsProduced} eggs.");
+                return $"Total eggs: {Eggs}";
+
+            case >= 80:
+
+                int eggsProducedHigh = 3;
+
+                Eggs += eggsProducedHigh;
+
+                Debug.Log($"{Name} is going to produce eggs. Amount produced this round: {eggsProducedHigh} eggs.");
+                return $"Total eggs: {Eggs}";
+        }
     }
 }

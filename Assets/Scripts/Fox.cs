@@ -2,8 +2,16 @@ using UnityEngine;
 
 public class Fox : Animal
 {
+
+    private int truffles;
+    public int Truffles
+    {
+        get => truffles;
+        private set => truffles = (value < 0) ? 0 : value;
+    }
+
     //Constructor
-    public override void Init(string newName)
+    public void InitFox(string newName)
     {
         base.Init(newName);
         PreferedFood = FoodType.Apple;
@@ -43,8 +51,23 @@ public class Fox : Animal
         }
     }
 
-    public override void Produce()
+    public override string Produce()
     {
-        throw new System.NotImplementedException();
+        switch (Happiness)
+        {
+            case <= 70:
+
+                Debug.Log($"{Name} is not happy enough to produce eggs. Happiness: {Happiness}");
+                return $"Total eggs: {Truffles}";
+
+            case >= 71:
+
+                int truffleProduced = Happiness / 10;
+
+                Truffles += truffleProduced;
+
+                Debug.Log($"{Name} is going to produce truffles. Amount produced this round: {truffleProduced} eggs.");
+                return $"Total eggs: {Truffles}";
+        }
     }
 }
