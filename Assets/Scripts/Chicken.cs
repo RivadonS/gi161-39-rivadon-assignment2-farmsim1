@@ -1,34 +1,14 @@
 using UnityEngine;
-
 public class Chicken : Animal
 {
-    private int eggs;
-    public int Eggs
-    {
-        get => eggs;
-        private set => eggs = (value < 0) ? 0 : value;
-    }
+    public int Eggs { get; private set; }
 
-    //Constructor
-    public void InitChicken(string newName)
-    {
-        base.Init(newName);
-        PreferedFood = FoodType.Grain;
-    }
+    protected override void SetPreferedFood() => PreferedFood = FoodType.Grain;
 
-    //Method
     public override void MakeSound()
     {
         AdjustHappiness(10);
-        Debug.Log($"{Name} makes the sound. Happiness increased by 10.");
-        Debug.Log($"{Name} clucking.");
-    }
-
-    public void Sleep()
-    {
-        AdjustHunger(5);
-        AdjustHappiness(10);
-        Debug.Log($"{Name} is sleeping. Hunger increased slightly and happiness increased.");
+        Debug.Log($"{Name} makes the sound. Happiness increased by 10.\n{Name} clucking.");
     }
 
     public override void GetStatus()
@@ -37,53 +17,23 @@ public class Chicken : Animal
         Debug.Log($"Name: {Name}, Eggs: {Eggs}");
     }
 
-    public void Feeds(FoodType preferedFood, int amountFood)
-    {
-        switch (preferedFood)
-        {
-            case FoodType.RottenFood:
-                AdjustHunger(0);
-                AdjustHappiness(-20);
-                Debug.Log($"{Name} ate RottenFood. Hunger unchanged, Happiness decreased by 20. Latest Happiness: {Happiness}");
-                break;
-            case FoodType.AnimalFood:
-                base.Feed(amountFood);
-                break;
-            default:
-                AdjustHunger(-amountFood);
-                AdjustHappiness(15);
-                Debug.Log($"{Name} is happy because eating {preferedFood} in amount of {amountFood}." +
-                    $"Latest Happiness: {Happiness}");
-                break;
-        }
-    }
-
     public override string Produce()
     {
-        switch (Happiness)
+        int eggsProduced = Happiness switch
         {
-            case <= 50:
+            <= 50 => 0,
+            >= 51 and <= 79 => 2,
+            >= 80 => 3
+        };
 
-                Debug.Log($"{Name} is not happy enough to produce eggs. Happiness: {Happiness}");
-                return $"Total eggs: {Eggs}";
-
-            case >= 51 and <= 79:
-
-                int eggsProduced = 2;
-
-                Eggs += eggsProduced;
-
-                Debug.Log($"{Name} is going to produce eggs. Amount produced this round: {eggsProduced} eggs.");
-                return $"Total eggs: {Eggs}";
-
-            case >= 80:
-
-                int eggsProducedHigh = 3;
-
-                Eggs += eggsProducedHigh;
-
-                Debug.Log($"{Name} is going to produce eggs. Amount produced this round: {eggsProducedHigh} eggs.");
-                return $"Total eggs: {Eggs}";
+        if (eggsProduced == 0)
+        {
+            Debug.Log($"{Name} is not happy enough to produce eggs. Happiness: {Happiness}");
+            return $"Total eggs: {Eggs}";
         }
+
+        Eggs += eggsProduced;
+        Debug.Log($"{Name} is going to produce eggs. Amount produced this round: {eggsProduced} eggs.\nTotal eggs: {Eggs} eggs");
+        return $"Total eggs: {Eggs} eggs";
     }
 }
