@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 64434689}
   - component: {fileID: 64434688}
   - component: {fileID: 64434687}
-  - component: {fileID: 64434686}
+  - component: {fileID: 64434691}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Untagged
@@ -139,18 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &64434686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 64434685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7775d38f24b33243a8a3f3da98fb325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Chicken
 --- !u!136 &64434687
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -242,6 +230,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &64434691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64434685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6a288a9da6adb418839ac06bada4c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 880554446}
   - component: {fileID: 880554445}
   - component: {fileID: 880554444}
-  - component: {fileID: 880554443}
+  - component: {fileID: 880554448}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -359,18 +359,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &880554443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 880554442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73423e5ce95869f4aa02241545bf9410, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Cow
 --- !u!136 &880554444
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -462,6 +450,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &880554448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880554442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5850ba4b74ae14f9a87afd2536c427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1303188249}
-  - component: {fileID: 1303188248}
+  - component: {fileID: 1303188250}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -571,23 +571,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1303188248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303188247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c76f83caac91fc14d990fbb171eb1887, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animals:
-  - {fileID: 880554443}
-  - {fileID: 64434686}
-  - {fileID: 2050798963}
-  animalsCount: []
 --- !u!4 &1303188249
 Transform:
   m_ObjectHideFlags: 0
@@ -603,6 +586,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303188250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303188247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e81370a28a26e54b88d6b81ca96d960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animals:
+  - {fileID: 880554448}
+  - {fileID: 64434691}
+  - {fileID: 2050798968}
+  animalsCount: []
 --- !u!1 &2050798962
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,7 +615,7 @@ GameObject:
   - component: {fileID: 2050798966}
   - component: {fileID: 2050798965}
   - component: {fileID: 2050798964}
-  - component: {fileID: 2050798963}
+  - component: {fileID: 2050798968}
   m_Layer: 0
   m_Name: Fox
   m_TagString: Untagged
@@ -623,18 +623,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2050798963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2050798962}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e4a85809da57245a4fcaff55aab2e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Fox
 --- !u!65 &2050798964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -724,6 +712,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050798968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050798962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1278f2fe6b6814a4594d81c8edf7adc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
